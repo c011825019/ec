@@ -12,7 +12,12 @@ Rails.application.routes.draw do
     registrations: 'customers/registrations'
   }
 
-  namespace :admin do
+  namespace :admins do
+    resources :customers, only: [:index, :show, :edit, :update]
+  end
+
+  scope module: :customers do
+    get 'customers/my_page' => 'customers#show', as: 'my_page'
   end
 
   root to: 'homes#top'

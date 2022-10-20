@@ -1,12 +1,11 @@
 <header>
   <nav>
-    <h1>customer</h1>
+    <h1>customers</h1>
     <div>
       <ul>
         <% if customer_signed_in? %>
           <li>
             <%= link_to 'ログアウト', destroy_customer_session_path %>
-            <%= link_to 'adログアウト', destroy_admin_session_path %>
           </li>
         <% else %>
           <li>
