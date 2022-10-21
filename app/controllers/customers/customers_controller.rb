@@ -13,6 +13,15 @@ class Customers::CustomersController < ApplicationController
     redirect_to my_page_path
   end
 
+  def unsubscribe
+    @customer = current_customer
+  end
+
+  def withdraw
+    current_customer.update(is_deleted: true)
+    redirect_to root_path
+  end
+
   private
 
   def customer_params
