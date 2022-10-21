@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   scope module: :customers do
     get 'customers/my_page' => 'customers#show', as: 'my_page'
+    get 'customers/information/edit' => 'customers#edit'
+    patch 'customers/information' => 'customers#update'
   end
 
   root to: 'homes#top'
