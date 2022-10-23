@@ -19,7 +19,7 @@ class Customers::CustomersController < ApplicationController
 
   def withdraw
     current_customer.update(is_deleted: true)
-    redirect_to destroy_admin_session_path
+    sign_out current_customer
   end
 
   private
