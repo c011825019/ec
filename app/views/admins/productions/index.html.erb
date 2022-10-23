@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h5 class="col-3 my-3 bg-light text-center">会員一覧</h5>
+
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>商品名</th>
+            <th>単価</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>制作ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order_details.each do |order_detail| %>
+            <tr>
+              <td><%= order_detail.item_id %></td>
+              <td><%= order_detail.purchase_price %></td>
+              <td><%= order_detail.quantity %></td>
+              <td><%= (order_detail.purchase_price * order_detail.quantity).to_i %></td>
+              <td>
+                <%= form_with model: order_detail, url: admins_production_path(order_detail) do |f| %>
+                  <%= f.select :product_status, [["着手不可", 0], ["制作待ち", 1], ["制作中", 2], ["制作完了", 3]] %>
+                  <%= f.submit '更新', class: "btn btn-sm btn-success" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

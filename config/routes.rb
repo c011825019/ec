@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items, only: [:index, :show, :new, :create]
     resources :orders, only: [:index, :show, :update]
-    resources :productions, only: [:update]
+    resources :productions, only: [:index, :update]
   end
 
   scope module: :customers do
